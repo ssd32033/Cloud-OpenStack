@@ -17,7 +17,21 @@ https://docs.openstack.org/install-guide/environment-packages-rdo.html
 
 7. DB - mariaDB
 # yum install mariadb mariadb-server python2-PyMySQL
+
+Create and edit the /etc/my.cnf.d/openstack.cnf file (backup existing configuration files in /etc/my.cnf.d/ if needed) and complete the following actions:
+
+[mysqld]
+bind-address = 10.0.0.11 ->리퀘스트 IP 바인딩
+
+default-storage-engine = innodb 
+innodb_file_per_table = on
+max_connections = 4096
+collation-server = utf8_general_ci
+character-set-server = utf8
+
 # systemctl enable mariadb.service
 # systemctl start mariadb.service
+
+#mysql_secure_installation -> 보안취약 설정 pw 설정
 
 8. 

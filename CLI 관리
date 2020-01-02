@@ -1,0 +1,15 @@
+<인증 서비스 Keystone>
+
+-토큰 : 자원에 접근하는데 사용되는 임의의 텍스트 bit
+        한정된 기간동안 유효
+
+-엔드포인트 : 서비스로 접근하려고 하는 보통 URL로 기술되는 네트워크로 접근가능한 주소
+
+. keystonerc_admin
+
+1. CLI 관리
+ #openstack project create --description "Project Name" demo  << 프로젝트생성
+ #openstack user create --password "pw" --project demo "ID" << ID/PW 생성
+ #openstack role add --project demo --user demo _member_
+ 
+ 

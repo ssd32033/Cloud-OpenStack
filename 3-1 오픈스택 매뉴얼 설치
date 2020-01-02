@@ -34,4 +34,7 @@ character-set-server = utf8
 
 #mysql_secure_installation -> 보안취약 설정 pw 설정
 
-8. 
+8. Rabbitmq 서버
+# yum install rabbitmq-server
+# systemctl enable rabbitmq-server.service
+# systemctl start rabbitmq-server.service

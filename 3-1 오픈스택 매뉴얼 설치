@@ -1,1 +1,21 @@
 https://docs.openstack.org/install-guide/environment-packages-rdo.html
+
+1. CentOS vm 설치
+
+2. NTP 설정
+
+3. 패키지
+# yum install centos-release-openstack-rocky
+
+4. yum update
+
+5. 클라이언트
+# yum install python-openstackclient
+
+6. selinux
+# yum install openstack-selinux
+
+7. DB - mariaDB
+# yum install mariadb mariadb-server python2-PyMySQL
+
+8. 

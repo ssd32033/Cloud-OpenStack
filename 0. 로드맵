@@ -1,1 +1,21 @@
+1 단계 : 리눅스 기초
+ - 리눅스 설치하기, 기본 명령어 사용하기, 데스크톱 사용하기, 파일 및 디렉토리 다루기, 파일 시스템 이해와 권한 설정하기, vim을 비롯한 편집기 사용하기, 
+  TCP/IP 네트워크 설정하기, 사용자와 그룹 관리하기, Systmed를 이용한 서비스와 데몬 다루기, 부팅 프로세스, 부트로더, 로그  확인하기, 
+  패키지 설치와 업데이트, 기본 쉘 사용하기
 
+2 단계 : 리눅스 시스템 관리
+ - 디스크와 파티션 다루기, 작업 예약, LVM 스토리지 사용하기, RAID 사용하기, 기본 방화벽 프로그램 사용하기, 디스크 Quota, 커널 컴파일,
+   SELinux 다루기, KVM 가상화 사용하기, NFS 서버, Samba 서버, VNC 서버, OpenSSH 서버 등
+
+3 단계 : 리눅스 네트워크 서버 프로그램
+ - Bind DNS 서버, Apache 웹 서버, Nginx 서버, Postfix 메일 서버, MariaDB 서버, VSFTP 서버, Apache Tomcat 서버, OpenLDAP 서버, Squid 서버,
+   DHCP 서버, NTP 서버, iSCSI 서버, PostgreSQL 서버, ProFTPD 서버, 389 디렉토리 서버 등
+   
+4 단계 : 리눅스 서버 보안, 모니터링, 로그, 백업 서버
+ - 3단계 네트워크 서버의 개별 보안, SELinux, 각 서버에 SSL/TLS 적용하기, PAM, Iptables/Firewalld 방화벽, Kerberos 인증 서버, IPA 인증서버,
+   Nagios & Cacti, Zabbix 모니터링 서버, ELK 로그 서버, Bacula 백업 서버, OpenVPN 서버, Rsylog 서버, Snort, Nmap, Tripwire 등
+   
+5 단계 : 클라우드 컴퓨터
+ - 오픈스택, AWS, CloudStack, 오픈네뷸라, Eucalyptus, RabbitMQ, Windows Azure, Openshift, Xen, KVM, Hyper-V, Pacemaker, Ceph 스토리지 클러스터 등
+ 
+ 6단계 : 

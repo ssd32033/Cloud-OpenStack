@@ -17,5 +17,7 @@ https://docs.openstack.org/install-guide/environment-packages-rdo.html
 
 7. DB - mariaDB
 # yum install mariadb mariadb-server python2-PyMySQL
+# systemctl enable mariadb.service
+# systemctl start mariadb.service
 
 8. 

@@ -38,3 +38,61 @@ character-set-server = utf8
 # yum install rabbitmq-server
 # systemctl enable rabbitmq-server.service
 # systemctl start rabbitmq-server.service
+
+# rabbitmqctl add_user openstack RABBIT_PASS ->오픈스택 user 추가
+
+9. memcached
+# yum install memcached python-memcached
+
+Edit the /etc/sysconfig/memcached file and complete the following actions:
+OPTIONS="-l 127.0.0.1,::1,controller"
+
+# systemctl enable memcached.service
+# systemctl start memcached.service
+
+10. This section describes how to install and configure the OpenStack Identity service, code-named keystone, on the controller node. For scalability purposes, this configuration deploys Fernet tokens and the Apache HTTP server to handle requests.
+$ mysql -u root -p
+MariaDB [(none)]> CREATE DATABASE keystone;
+MariaDB [(none)]> GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'localhost' \
+IDENTIFIED BY 'KEYSTONE_DBPASS';
+MariaDB [(none)]> GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'%' \
+IDENTIFIED BY 'KEYSTONE_DBPASS';
+
+11. Apache 패키지, 모듈 추가
+# yum install openstack-keystone httpd mod_wsgi
+
+Edit the /etc/keystone/keystone.conf file and complete the following actions:
+
+[database]
+# ...
+connection = mysql+pymysql://keystone:KEYSTONE_DBPASS@controller/keystone
+
+[token]
+# ...
+provider = fernet -> 토큰 암호화
+
+# su -s /bin/sh -c "keystone-manage db_sync" keystone -> 서브shell 지정, 사용자이름
+
+# keystone-manage fernet_setup --keystone-user keystone --keystone-group keystone
+# keystone-manage credential_setup --keystone-user keystone --keystone-group keystone
+
+# keystone-manage bootstrap --bootstrap-password ADMIN_PASS \
+  --bootstrap-admin-url http://controller:5000/v3/ \
+  --bootstrap-internal-url http://controller:5000/v3/ \
+  --bootstrap-public-url http://controller:5000/v3/ \
+  --bootstrap-region-id RegionOne
+  
+  ServerName controller
+
+# ln -s /usr/share/keystone/wsgi-keystone.conf /etc/httpd/conf.d/
+
+# systemctl enable httpd.service
+# systemctl start httpd.service
+
+$ export OS_USERNAME=admin
+$ export OS_PASSWORD=ADMIN_PASS
+$ export OS_PROJECT_NAME=admin
+$ export OS_USER_DOMAIN_NAME=Default
+$ export OS_PROJECT_DOMAIN_NAME=Default
+$ export OS_AUTH_URL=http://controller:5000/v3
+$ export OS_IDENTITY_API_VERSION=3
